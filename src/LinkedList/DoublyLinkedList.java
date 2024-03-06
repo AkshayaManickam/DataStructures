@@ -115,6 +115,12 @@ class DLL{
             return 0;
         }
         last.next=temp.next;
+        if (temp.next != null) {
+            temp.next.prev = last;
+        } 
+        else {
+            tail = last;
+        }
         size--;
         return 1;
     }
