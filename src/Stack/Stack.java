@@ -1,7 +1,7 @@
 package Stack;
 
 public class Stack {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws StackException {
         S1 s=new DynamicStack(5);
         s.push(10);
         s.push(20);
@@ -13,8 +13,12 @@ public class Stack {
         System.out.println(s.pop());
         System.out.println(s.pop());
         System.out.println(s.peek());
+        S1 s1=new S1(3);
+        s1.push(10);
+        s1.push(20);
+        s1.push(30);
+        s1.push(40);
     }
-
 }
 class S1{
     protected int[] data;
@@ -33,15 +37,15 @@ class S1{
         ptr++;
         this.data[ptr]=data;
     }
-    public int pop(){
+    public int pop() throws StackException {
         if(isEmpty()){
-            System.out.println("Can't pop from a empty stack");
+            throw new StackException("Stack is Empty!!");
         }
         return this.data[ptr--];
     }
-    public int peek(){
+    public int peek() throws StackException{
         if(isEmpty()){
-            System.out.println("Can't pop from a empty stack");
+            throw new StackException("Stack is Empty!!");
         }
         return this.data[ptr];
     }
